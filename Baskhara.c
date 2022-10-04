@@ -15,14 +15,18 @@ int main() {
     delta = ((b*b)+(-4*a*c));
 
     if(delta >= 0){
+        if(delta == 0) {
+            float x;
+            x = -b / (2*a);
+            printf("A equacao tem duas raizes raizes (iguais): %f\n", x);
+        } else {
+            x1 = (-b + sqrt(delta)) / (2*a);
+            x2 = (-b - sqrt(delta)) / (2*a);
 
-        x1 = (-b + sqrt(delta)) / (2*a);
-        x2 = (-b - sqrt(delta)) / (2*a);
-
-        printf("O resultado da baskhara e: %.3f, %.3f", x1, x2);
+            printf("O resultado da baskhara e: %.3f, %.3f", x1, x2);
+        }
+       
     } else {
-
-
         printf("A equacao nao tem raizes reais!");
     }
 
