@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+#include <string.h>
+
+int numMenu;
+int numPedido;
+int posicao;
+int codigo;
+char buscaCpf;
+
+struct cad {
+    char nome[30];
+    char cpf[20];
+    int numPedido;
+};
+
+struct cad cliente[999];
+
+void linha() {
+    printf("\n=====================================\n");
+}
+
+void mostrarMenu() {
+    linha();
+    printf(">>BEM VINDO(A) AO BAR DO DIABETICO!<<");
+    linha();
+    printf("1) Fazer um cadastro\n");
+    printf("2) Mostar cardapio\n");
+    printf("3) Fazer pedido\n");
+    printf("4) Pedidos anteriores\n");
+    printf("5) Sair\n\n");
+    printf("Qual opcao acima voce deseja selecionar?  ");
+}
+
+int main() {
+
+    setlocale(LC_ALL, "Portuguese");
+
+    while (numMenu != 5){
+
+        mostrarMenu();
+        scanf("%d", &numMenu);
+        system("cls");
+
+        switch (numMenu){
+
+            case 1:
+                printf("PREENCHA AS INFORMACOES ABAIXO:\n\n");
+                printf("\n=> CPF: ");
+                scanf("%s", &cliente[codigo].cpf);
+                printf("\n=> Nome: ");
+                fflush(stdin);
+                gets(cliente[codigo].nome);
+                codigo++;
+                printf("\n\n");
+                printf(">> CADASTRO REALIZADO COM SUCESSO! <<\n\n");
+                system("pause");
+                break;
+
+            case 2:
+                system("cls");
+                printf(">> CARDAPIO <<\n\n");
+                printf("|ALIMENTOS|\n");
+                printf("1- Pastel\n");
+                printf("2- Cachorro Quente\n");
+                printf("3- Coxinha de Frango\n");
+                printf("4- Xis(Completo)\n\n");
+                printf("|BEBIDAS|\n");
+                printf("1- Agua com/sem gas\n");
+                printf("2- Cerveja\n");
+                printf("3- Coca-Cola\n");
+                printf("4- Suco\n\n");
+                printf(">> PARA FAZER O PEDIDO BASTA DIGITAR O NUMERO 2 NO MENU! <<\n\n");
+                system("pause");
+                break;
+
+            case 3:
+                printf(">> PEDIDO <<\n\n");
+                printf("O que voce deseja pedir: ");
+                scanf("%d", &numPedido);
+                system("pause");
+                break;
+
+            case 4:
+                printf(">> PEDIDOS ANTERIORES <<\n");
+                printf("Digite qual e seu CPF: ");
+                fflush(stdin);
+                scanf("%s", &buscaCpf);
+                if(posicao>=0) {
+                    printf("\nCPF: %s", cliente[posicao].cpf);
+                    printf("\nNome: %s", cliente[posicao].nome);
+                    printf("\nNumero do Pedido: %d\n\n", cliente[posicao].numPedido);
+                } else {
+                    printf("CPF nao encontrado! Tente outro.\n");
+                }
+                system("pause");
+                break;
+
+            case 5:
+                linha();
+                printf(">> OBRIGADO PELA PREFERENCIA, VOLTE SEMPRE! <<");
+                linha();
+                break;
+
+            default:
+                printf("Opcao Invalida!");
+                system("pause");
+        }
+        system("cls");
+    }
+    return 0;
+}
